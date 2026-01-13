@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log("✅ DB’ye kaydedildi:", appointment);
+    console.log("✅ DB'ye kaydedildi:", appointment);
 
     return NextResponse.json(appointment);
   } catch (error) {
