@@ -1,25 +1,50 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// This is your Prisma schema file
 
 generator client {
-  provider = "prisma-client"
-  output   = "../node_modules/.prisma/client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Appointment {
   id        String   @id @default(cuid())
-  name      String
+  ownerName String
   phone     String
   petName   String
-  service   String
-  date      DateTime
+  petBreed  String
+  date      String
+  notes     String?
+  // DÜZELTME: Kod tarafıyla aynı olması için varsayılanı güncelledik
+  status    String   @default("Talep Bekliyor") 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  // DÜZELTME: Okunma bilgisi eklendi
+  isRead    Boolean  @default(false) 
+  createdAt DateTime @default(now())
+}
+
+// DÜZELTME: Tek bir ayar tablosu kullanacağız (SiteSetting)
+model SiteSetting {
+  id           Int    @id @default(1)
+  heroVideoUrl String @default("/kopek1video.mp4")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  price       Decimal?
+  images      String[] @default([])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
