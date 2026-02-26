@@ -198,15 +198,17 @@ export default function AppointmentPage() {
         
         {/* --- SOL PANEL: VİDEO --- */}
         <div className="relative w-full h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-stone-900 overflow-hidden order-1 shadow-2xl z-0">
+          
             <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="absolute inset-0 w-full h-full object-cover opacity-80"
-            >
-                <source src="/kopekvideooo.mp4" type="video/mp4" />
-            </video>
+    autoPlay 
+    loop 
+    muted 
+    playsInline 
+    poster="/kopekvideooo.png" // 👈 Burayı ekledik
+    className="absolute inset-0 w-full h-full object-cover opacity-80"
+>
+    <source src="/kopekvideooo.mp4" type="video/mp4" />
+</video>
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="absolute inset-0 p-8 lg:p-16 lg:pt-40 flex flex-col justify-between z-10 pointer-events-none">
                 <div className="text-white/80 text-[10px] font-bold tracking-[0.4em] uppercase">
