@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "@uploadthing/react/styles.css";
-import "./globals.css"; // Bu dosya app klasöründe olduğu için ./ doğru
+import "./globals.css";
 import { Toaster } from "sonner";
 import { Playfair_Display, Lato } from "next/font/google";
+// 1. ADIM: Loader bileşenini içe aktar (Yolun doğruluğunu kontrol et)
+import Loader from "@/components/Loader"; 
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -29,8 +31,12 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body className={`${playfair.variable} ${lato.variable} font-sans antialiased min-h-screen flex flex-col bg-stone-50 text-rich-black`}>
-        {/* Navbar ve Footer BURADA YOK */}
+        
+        {/* 2. ADIM: Loader'ı buraya ekledik. Tüm sayfalarda önce bu görünecek. */}
+        <Loader /> 
+
         {children}
+        
         <Toaster position="top-right" theme="dark" />
       </body>
     </html>
