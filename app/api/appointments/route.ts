@@ -7,11 +7,13 @@ export async function POST(req: Request) {
 
     const appointment = await prisma.appointment.create({
       data: {
-        name: body.name,
+        ownerName: body.ownerName,
         phone: body.phone,
         petName: body.petName,
-        service: body.service,
-        date: new Date(body.date),
+        petBreed: body.petBreed,
+        date: new Date(body.date).toISOString(),
+        notes: body.notes,
+        status: "Talep Bekliyor",
       },
     });
 
