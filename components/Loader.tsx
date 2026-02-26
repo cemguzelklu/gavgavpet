@@ -3,30 +3,37 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { PawPrint } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Loader() {
   const [show, setShow] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Hatayı çözen kısım: setState'i bir sonraki render döngüsüne ertelemek
+    const startTimer = setTimeout(() => {
+      setShow(true);
+    }, 0);
+
+    const endTimer = setTimeout(() => {
       setShow(false);
     }, 1000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(endTimer);
+    };
+  }, [pathname]); // Sayfa yolu her değiştiğinde çalışır
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {show && (
         <motion.div
-          key="loader"
+          key={pathname} // Pathname değiştiğinde elementin yenilenmesini sağlar
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          // DÜZELTME:
-          // bg-[#FDFBF7]/80 -> Rengi koyulaştırdık (Daha tok, sisli görünür).
-          // backdrop-blur-3xl -> Arkadaki her şeyi birbirine sokan güçlü blur.
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FDFBF7]/80 backdrop-blur-3xl"
         >
           <div className="flex flex-col items-center gap-6">
