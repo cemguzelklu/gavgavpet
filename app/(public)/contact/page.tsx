@@ -4,14 +4,19 @@ import { createContactMessage } from "../../actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Instagram, ArrowRight, Check, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Check, MessageCircle, ExternalLink } from "lucide-react";
 import { useRef, useState } from "react";
-import Link from "next/link";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  // GAVGAVPET İşletme Linki (Tıklandığında gidecek olan adres)
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=GavGavPet+Maslak+1453";
+
+  // GAVGAVPET Embed Linki (Haritada pinli görünecek olan iframe adresi)
+  const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.1014167576566!2d29.0118659765682!3d41.13233261245844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab50058ec0881%3A0xe54955b25208f755!2sGavGavPet!5e0!3m2!1str!2str!4v1740665300000!5m2!1str!2str&q=GavGavPet";
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
@@ -28,17 +33,16 @@ export default function ContactPage() {
   }
 
   return (
-    // NAVBAR PAYI: pt-[100px]
     <main className="bg-[#FDFBF7] min-h-screen w-full pt-[100px] flex flex-col">
       
-      {/* BAŞLIK ALANI (Border-b ile ayrılmış) */}
+      {/* BAŞLIK ALANI */}
       <div className="w-full px-6 py-12 lg:px-12 border-b border-black">
           <h1 className="text-6xl lg:text-9xl font-serif text-black leading-none tracking-tighter">
               CONTACT
           </h1>
           <div className="flex justify-between items-end mt-4">
               <span className="text-xs font-bold tracking-[0.4em] uppercase text-black block">
-                  GavGavPet Atelier — Est. 2024
+                  GavGavPet Atelier — Est. 2019
               </span>
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-black hidden md:block">
                   Scroll Down
@@ -46,12 +50,10 @@ export default function ContactPage() {
           </div>
       </div>
 
-      {/* ANA GRID: SOL (FORM) - SAĞ (BİLGİ & HARİTA) */}
       <div className="flex-1 w-full grid grid-cols-1 lg:grid-cols-[55%_45%]">
         
         {/* --- SOL PANEL: FORM --- */}
         <div className="border-r border-black p-6 lg:p-24 flex flex-col justify-center order-2 lg:order-1">
-            
             <div className="mb-12">
                 <p className="text-xl font-serif text-black max-w-md">
                     Bize ulaşın. Randevu talepleri, iş birlikleri veya sadece bir merhaba için formu doldurun.
@@ -59,7 +61,6 @@ export default function ContactPage() {
             </div>
 
             <form ref={formRef} action={handleSubmit} className="space-y-12">
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="group relative">
                         <label className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">İsim Soyisim</label>
@@ -97,14 +98,13 @@ export default function ContactPage() {
                     />
                 </div>
 
-                {/* DÜZELTME BURADA: Buton Stili */}
                 <Button 
                     type="submit" 
                     disabled={loading || success}
                     className={`w-full md:w-auto rounded-none h-16 px-12 text-xs tracking-[0.3em] uppercase transition-all duration-300 border border-black
                         ${success 
-                            ? "bg-black text-white cursor-default" // Başarılıysa Siyah Zemin / Beyaz Yazı
-                            : "bg-transparent text-black hover:!bg-black hover:!text-white" // Normalse Şeffaf Zemin / Siyah Yazı -> Hover: Siyah Zemin / Beyaz Yazı
+                            ? "bg-black text-white cursor-default" 
+                            : "bg-transparent text-black hover:!bg-black hover:!text-white"
                         }
                     `}
                 >
@@ -114,23 +114,16 @@ export default function ContactPage() {
                             <Check className="w-4 h-4" />
                         </div>
                     ) : (
-                        <>
-                            {loading ? "GÖNDERİLİYOR..." : "MESAJI GÖNDER"} 
-                        </>
+                        <>{loading ? "GÖNDERİLİYOR..." : "MESAJI GÖNDER"}</>
                     )}
                 </Button>
-
             </form>
         </div>
 
-
-        {/* --- SAĞ PANEL: INFO BLOKLARI & HARİTA --- */}
+        {/* --- SAĞ PANEL: INFO & HARİTA --- */}
         <div className="flex flex-col order-1 lg:order-2">
             
-            {/* INFO GRID (4 Kare) */}
             <div className="grid grid-cols-2 border-b border-black">
-                
-                {/* Telefon */}
                 <a href="tel:+905368994374" className="border-r border-black border-b border-black lg:border-b-0 p-8 lg:p-12 hover:bg-black hover:text-white transition-all duration-500 group flex flex-col justify-between h-48 lg:h-64">
                     <div className="flex justify-between items-start">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Phone</span>
@@ -139,7 +132,6 @@ export default function ContactPage() {
                     <span className="text-lg lg:text-2xl font-serif">+90 536 899 43 74</span>
                 </a>
 
-                {/* Mail */}
                 <a href="mailto:gavgavpetkuafor@gmail.com" className="p-8 lg:p-12 border-b border-black lg:border-b-0 hover:bg-black hover:text-white transition-all duration-500 group flex flex-col justify-between h-48 lg:h-64">
                     <div className="flex justify-between items-start">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Email</span>
@@ -148,7 +140,6 @@ export default function ContactPage() {
                     <span className="text-lg lg:text-xl font-serif break-all">gavgavpetkuafor@gmail.com</span>
                 </a>
 
-                {/* WhatsApp */}
                 <a href="https://wa.me/905368994374" target="_blank" className="border-r border-black p-8 lg:p-12 hover:bg-black hover:text-white transition-all duration-500 group flex flex-col justify-between h-48 lg:h-64">
                     <div className="flex justify-between items-start">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">WhatsApp</span>
@@ -157,7 +148,6 @@ export default function ContactPage() {
                     <span className="text-lg lg:text-2xl font-serif">Chat With Us</span>
                 </a>
 
-                {/* Instagram */}
                 <a href="https://www.instagram.com/gavgavpet_kuafor" target="_blank" className="p-8 lg:p-12 hover:bg-black hover:text-white transition-all duration-500 group flex flex-col justify-between h-48 lg:h-64">
                     <div className="flex justify-between items-start">
                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Instagram</span>
@@ -168,9 +158,10 @@ export default function ContactPage() {
             </div>
 
             {/* HARİTA ALANI */}
-            <div className="flex-1 relative min-h-[400px] border-b border-black lg:border-b-0">
+            <div className="flex-1 relative min-h-[400px] border-b border-black lg:border-b-0 group/map">
+                
                 {/* Adres Barı */}
-                <div className="absolute top-0 left-0 bg-[#FDFBF7] border-r border-b border-black p-4 z-10 max-w-[80%]">
+                <div className="absolute top-0 left-0 bg-[#FDFBF7] border-r border-b border-black p-4 z-20 max-w-[80%] pointer-events-none">
                     <div className="flex items-start gap-3">
                         <MapPin className="w-4 h-4 mt-1" />
                         <div>
@@ -184,21 +175,32 @@ export default function ContactPage() {
                     </div>
                 </div>
 
-                {/* Google Maps Embed */}
+                {/* Görünmez Katman */}
+                <a 
+                    href={googleMapsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-10 flex items-center justify-center bg-black/0 group-hover/map:bg-black/5 transition-colors duration-500 cursor-pointer"
+                >
+                    <div className="opacity-0 group-hover/map:opacity-100 bg-white text-black px-6 py-3 text-[10px] font-bold tracking-widest uppercase flex items-center gap-3 transition-all duration-500 translate-y-4 group-hover/map:translate-y-0">
+                        Yol Tarifi Al <ExternalLink className="w-3 h-3" />
+                    </div>
+                </a>
+
+                {/* Google Maps Embed - GAVGAVPET Pinli Versiyon */}
                 <iframe 
                     src="https://maps.google.com/maps?q=41.11883153649000,29.00736706441791&z=15&output=embed" 
                     width="100%" 
                     height="100%" 
-                    style={{ border: 0, filter: "grayscale(100%)" }} 
+                    style={{ border: 0, filter: "grayscale(100%) brightness(0.9)" }} 
                     allowFullScreen={true} 
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0"
+                    className="absolute inset-0 pointer-events-none"
                 ></iframe>
             </div>
 
         </div>
-
       </div>
     </main>
   );

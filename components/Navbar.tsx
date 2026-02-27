@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X, PawPrint } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation"; // --- YENİ: Sayfa yolunu almak için eklendi ---
+import { usePathname } from "next/navigation"; 
 import {
   Sheet,
   SheetContent,
@@ -13,19 +13,16 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-// --- GÜNCELLENEN BİLEŞEN ---
 const MenuLink = ({ href, label, onClick, isActive }: { href: string, label: string, onClick: (e: React.MouseEvent) => void, isActive: boolean }) => (
   <Link 
     href={href} 
     onClick={onClick} 
     className={`group flex items-center text-3xl md:text-4xl font-serif py-2 transition-all duration-500 ${isActive ? "text-stone-900 italic" : "text-black"}`}
   >
-      {/* isActive ise çizgi sabit durur, değilse sadece hoverda çıkar */}
       <span className={`h-[1px] bg-black transition-all duration-500 ease-out 
         ${isActive ? "w-12 mr-4 opacity-100" : "w-0 mr-0 opacity-0 group-hover:w-8 group-hover:mr-4 group-hover:opacity-100"}
       `}></span>
       
-      {/* Yazı kayma efekti */}
       <span className={`transition-all duration-500 ease-out 
         ${isActive ? "translate-x-2 font-medium" : "group-hover:italic group-hover:translate-x-2 group-hover:text-stone-600"}
       `}>
@@ -38,7 +35,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname(); // --- MEVCUT SAYFAYI ALIR ---
+  const pathname = usePathname(); 
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 0);
@@ -73,7 +70,6 @@ export default function Navbar() {
     `}>
       <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 md:px-12">
         
-        {/* --- SOL: MENÜ BUTONU --- */}
         <div className="flex-1 flex items-center justify-start">
            {isMounted && (
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -91,16 +87,16 @@ export default function Navbar() {
                 
                 <SheetContent side="left" className="w-full md:w-[400px] bg-[#FDFBF7] border-r border-stone-100 p-8 md:p-10 z-[60] transition-all duration-500 ease-in-out">
                     <SheetHeader className="mb-8 md:mb-12 text-left">
-                        <SheetTitle className="font-serif text-3xl md:text-4xl font-light text-black tracking-tight">
-                        <h1 className="text-2xl md:text-4xl font-serif text-black tracking-tight hover:opacity-70 transition-opacity scale-y-105 flex items-baseline">
-                    <span className="font-bold">GAVGAV</span>
-                    <span className="font-light italic ml-0.3">Pet</span>
-                </h1>
+                        {/* asChild prop'u h2 içine h1 hatasını çözer */}
+                        <SheetTitle asChild>
+                            <h1 className="text-2xl md:text-4xl font-serif text-black tracking-tight hover:opacity-70 transition-opacity scale-y-105 flex items-baseline">
+                                <span className="font-bold">GAVGAV</span>
+                                <span className="font-light italic ml-0.3">Pet</span>
+                            </h1>
                         </SheetTitle>
                     </SheetHeader>
                     
                     <div className="flex flex-col gap-4 md:gap-6">
-                        {/* isActive={(pathname === "/")} kontrolü hangi sayfanın aktif olduğunu belirler */}
                         <MenuLink href="/" label="Ana Sayfa" onClick={handleHomeClick} isActive={pathname === "/"} />
                         <MenuLink href="/services" label="Hizmetler" onClick={() => setIsOpen(false)} isActive={pathname === "/services"} />
                         <MenuLink href="/contact" label="İletişim" onClick={() => setIsOpen(false)} isActive={pathname === "/contact"} />
@@ -114,6 +110,7 @@ export default function Navbar() {
                         <div className="mt-8 md:mt-16 pt-8 md:pt-10 border-t border-stone-200">
                             <p className="text-xs uppercase tracking-widest text-stone-400 mb-4 md:mb-6 font-bold">Bize Ulaşın</p>
                             <a href="tel:+905368994374" className="text-xl font-serif text-black mb-2 block">+90 (536) 899 43 74</a>
+                            <a href="https://wa.me/905368994374" target="_blank" className="text-lg font-serif text-stone-600 mb-2 block hover:text-green-600 transition-colors">WhatsApp</a>
                             <a href="mailto:gavgavpetkuafor@gmail.com" className="text-lg font-serif text-stone-600 block">gavgavpetkuafor@gmail.com</a>
                         </div>
                     </div>
@@ -122,7 +119,6 @@ export default function Navbar() {
             )}
         </div>
 
-        {/* --- ORTA: LOGO --- */}
         <div className="flex-1 flex justify-center">
             <Link 
                 href="/" 
@@ -140,7 +136,6 @@ export default function Navbar() {
             </Link>
         </div>
 
-       {/* --- SAĞ: RANDEVU BUTONU --- */}
        <div className="flex-1 flex items-center justify-end">
             <Button asChild className="!hidden md:!flex bg-black text-white border border-black hover:!bg-white hover:!text-black transition-colors duration-300 rounded-full h-11 px-6 text-xs tracking-widest uppercase shadow-none items-center justify-center">
                 <Link href="/appointment">Randevu Al</Link>

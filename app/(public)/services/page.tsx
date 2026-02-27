@@ -80,8 +80,8 @@ export default function ServicesPage() {
                 </p>
             </div>
 
-            {/* SCROLL GÖSTERGESİ */}
-            <div className="absolute bottom-0 left-0 w-full flex justify-center pb-8 z-20 mix-blend-overlay">
+            {/* SCROLL GÖSTERGESİ - OPTİMİZE EDİLMİŞ MESAFE (bottom-[-20px] ve md:bottom-[-30px]) */}
+            <div className="absolute bottom-[-20px] md:bottom-[-30px] left-0 w-full flex justify-center z-20 mix-blend-overlay">
                 <div className="flex flex-col items-center gap-4">
                     <span className="text-[10px] text-white/80 font-bold tracking-[0.4em] uppercase animate-pulse">
                         Explore
@@ -147,7 +147,7 @@ export default function ServicesPage() {
             ))}
         </section>
 
-        {/* --- FOOTER CTA (GÜNCELLENDİ) --- */}
+        {/* --- FOOTER CTA --- */}
         <section className="py-32 text-center px-6 bg-black relative">
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             
@@ -158,7 +158,6 @@ export default function ServicesPage() {
             </h2>
             
             <div className="flex justify-center gap-6">
-                {/* DÜZELTME BURADA: hover:!bg-white hover:!text-black eklendi */}
                 <Button asChild className="bg-transparent border border-white/30 text-white hover:!bg-white hover:!text-black rounded-none h-14 px-10 text-xs tracking-[0.2em] uppercase transition-all">
                     <Link href="/contact">İletişime Geç</Link>
                 </Button>
