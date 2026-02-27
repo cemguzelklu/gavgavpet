@@ -21,8 +21,11 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "Gavgav Pet | Luxury Pet Spa",
   description: "Patili dostlarınız için üst düzey bakım ve spa deneyimi.",
+  icons: {
+    icon: "/icon.png", // public klasöründeki yeni isme yönlendirdik
+    apple: "/icon.png",
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
