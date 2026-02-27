@@ -197,7 +197,8 @@ export default function AppointmentPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full relative z-10">
         
         {/* --- SOL PANEL: VİDEO --- */}
-        <div className="relative w-full h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-stone-900 overflow-hidden order-1 shadow-2xl z-0">
+        {/* bg-stone-900 yerine bg-[#FDFBF7] kullanarak o gri patlamayı düzelttik */}
+        <div className="relative w-full h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-[#FDFBF7] overflow-hidden order-1 shadow-2xl z-0">
             <video 
                 autoPlay 
                 loop 
