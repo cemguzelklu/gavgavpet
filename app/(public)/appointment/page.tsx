@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Check, Star, ChevronLeft, ChevronRight, Calendar as CalendarIcon, PawPrint } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-// --- YENİ: Next.js Image bileşeni eklendi ---
-import Image from "next/image";
 
 // --- ÖZEL TAKVİM BİLEŞENİ ---
 const CustomDatePicker = ({ onSelect }: { onSelect: (date: string) => void }) => {
@@ -198,37 +196,19 @@ export default function AppointmentPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full relative z-10">
         
-        {/* --- SOL PANEL: VİDEO VE ÖNCELİKLİ RESİM (HIZLANDIRILMIŞ) --- */}
-        <div className="relative w-full h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-[#FDFBF7] overflow-hidden order-1 shadow-2xl z-0">
-            
-            {/* Instant Placeholder (Gri ekranı öldüren katman) */}
-            <div className="absolute inset-0 bg-[#DCCFCF] opacity-40 z-[1]" style={{ filter: 'blur(40px)' }}></div>
-
-            <Image 
-                src="/kopekvideooo.png" 
-                alt="GavgavPet" 
-                fill 
-                priority 
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+Z9PQAI8QMpBy8f0AAAAABJRU5ErkJggg=="
-                className="object-cover opacity-80 z-[2]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            
+        {/* --- SOL PANEL: VİDEO --- */}
+        <div className="relative w-full h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-stone-900 overflow-hidden order-1 shadow-2xl z-0">
             <video 
                 autoPlay 
                 loop 
                 muted 
                 playsInline 
-                preload="auto"
-                className="absolute inset-0 w-full h-full object-cover opacity-80 z-[10]"
+                className="absolute inset-0 w-full h-full object-cover opacity-80"
             >
                 <source src="/kopekvideooo.mp4" type="video/mp4" />
             </video>
-            
-            <div className="absolute inset-0 bg-black/20 z-[20]"></div>
-            
-            <div className="absolute inset-0 p-8 lg:p-16 lg:pt-40 flex flex-col justify-between z-[30] pointer-events-none">
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute inset-0 p-8 lg:p-16 lg:pt-40 flex flex-col justify-between z-10 pointer-events-none">
                 <div className="text-white/80 text-[10px] font-bold tracking-[0.4em] uppercase">
                     GavgavPet Reservation
                 </div>
