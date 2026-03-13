@@ -67,7 +67,6 @@ export default function ServicesPage() {
         {/* --- HERO SECTION --- */}
         <section className="h-screen flex flex-col items-center justify-center text-center px-6 relative">
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                <Sparkles className="w-8 h-8 md:w-12 md:h-12 text-white/50 mx-auto animate-pulse" />
                 <span className="block text-white/70 text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase">
                     Gavgav Signature Services
                 </span>
