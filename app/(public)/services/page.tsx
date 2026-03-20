@@ -146,23 +146,100 @@ export default function ServicesPage() {
             ))}
         </section>
 
-        {/* --- FOOTER CTA --- */}
-        <section className="py-32 text-center px-6 bg-black relative">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-            
-            <Star className="w-8 h-8 mx-auto mb-8 text-white/30 animate-spin-slow" />
-            
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-8">
-                Hazır mısınız?
-            </h2>
-            
-            <div className="flex justify-center gap-6">
-                <Button asChild className="bg-transparent border border-white/30 text-white hover:!bg-white hover:!text-black rounded-none h-14 px-10 text-xs tracking-[0.2em] uppercase transition-all">
-                    <Link href="/contact">İletişime Geç</Link>
-                </Button>
-            </div>
-        </section>
+      {/* --- LOCATION GLASS --- */}
+<section className="relative px-4 md:px-12 pb-24 mt-0">
+  <div className="max-w-4xl mx-auto">
+    <div className="backdrop-blur-md bg-white/5 border border-white/10 overflow-hidden">
 
+      {/* Üst başlık şeridi */}
+      <div className="px-8 md:px-12 py-5 border-b border-white/10 flex items-center justify-between">
+        <span className="font-sans text-[10px] font-bold tracking-[0.4em] uppercase text-white/40">
+          İletişim & Konum
+        </span>
+        <span className="font-sans text-[10px] font-bold tracking-[0.4em] uppercase text-[#DCCFCF]">
+          GavgavPet
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+
+        {/* Adres */}
+        <div className="px-8 md:px-10 py-8 flex flex-col gap-3">
+          <p className="font-sans text-[9px] font-bold tracking-[0.3em] uppercase text-white/30 mb-1">
+            Adres
+          </p>
+          <p className="font-sans text-sm text-white/80 leading-relaxed">
+            Maslak 1453 Sitesi, T4b Blok<br />
+            -4. Kat, No: 213<br />
+            34398 Sarıyer / İstanbul
+          </p>
+          <Link
+            href="https://www.google.com/maps/search/?api=1&query=GavGavPet+Maslak+1453"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-[#DCCFCF] hover:text-white transition-colors mt-2 group"
+          >
+            Yol Tarifi Al
+            <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+          </Link>
+        </div>
+
+        {/* Telefon + Saat */}
+        <div className="px-8 md:px-10 py-8 flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[9px] font-bold tracking-[0.3em] uppercase text-white/30">
+              Telefon
+            </p>
+            <Link
+              href="tel:+905368994374"
+              className="font-sans text-sm text-white/80 hover:text-white transition-colors"
+            >
+              +90 536 899 43 74
+            </Link>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[9px] font-bold tracking-[0.3em] uppercase text-white/30">
+              Çalışma Saatleri
+            </p>
+            <p className="font-sans text-sm text-white/80 leading-relaxed">
+              Pazartesi — Pazar<br />
+              09:00 – 19:00
+            </p>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="px-8 md:px-10 py-8 flex flex-col justify-between gap-6">
+          <div className="flex flex-col gap-2">
+            <p className="font-sans text-[9px] font-bold tracking-[0.3em] uppercase text-white/30">
+              Rezervasyon
+            </p>
+            <p className="font-sans text-sm text-white/60 leading-relaxed">
+              Randevu almak için arayın veya WhatsApp&apos;tan yazın.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/appointment"
+              className="inline-flex items-center justify-center h-11 bg-white text-black font-sans text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-[#DCCFCF] transition-colors duration-300"
+            >
+              Randevu Oluştur
+            </Link>
+            <Link
+              href="https://wa.me/905368994374"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-11 bg-transparent border border-white/20 text-white/70 font-sans text-[10px] font-bold tracking-[0.25em] uppercase hover:border-white/50 hover:text-white transition-colors duration-300"
+            >
+              WhatsApp
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
       </div>
     </main>
   );

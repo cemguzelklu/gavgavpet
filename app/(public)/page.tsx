@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Star, ChevronRight, ChevronLeft, PawPrint, Quote, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react"; 
+import { Star, ChevronRight, ChevronLeft, PawPrint, Quote } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion"; 
+import LocationFooterBox from "@/components/LocationFooterBox";
 import { getAdminStats } from "../admin/actions"; 
+import Footer from "@/components/Footer";
 
 
 
@@ -60,21 +62,21 @@ const reviews = [
     },
     {
         id: 2,
-        name: "Çağlanur Kaya",
-        date: "1 gün önce",
-        text: "Hamide hanım ve ekibi çok ilgilendi isteklerimizi dinleyip incelikle ve titizlikle kızımın traşını yaptılar çok memnun kaldım kesinlikle tavsiye ediyorum."
+        name: "Nima Helmi",
+        date: "2 hafta önce",
+        text: "Açıkçası bu kadar ilgili olacaklarını beklemiyordum. Köpeğimin hassas bir cildi var ve özellikle belirttim, kullandıkları ürünlere kadar anlattılar. Gözüm arkada kalmadan bıraktım. Çıkışta mis gibi kokuyordu ve çok mutlu görünüyordu. Gerçekten işlerini severek yapıyorlar.🤍🤍"
     },
     {
         id: 3,
-        name: "Canan Yurdakul",
-        date: "2 gün önce",
-        text: "Senelerdir çocuğumu güvenle emanet edebildiğim tek yer. Hamide hanım sayesinde gözüm arkada kalmadan teslim edip çıkabiliyorum. Her detay için özellikle tekrar bilgilendirme yapılmak üzere aranıyorum. Süreci ilgi ve titizlikle yönetiyorlar.🫶🏼"
+        name: "Neslişah Sevinç",
+        date: "3 ay önce",
+        text: "Gav Gav Pet Kuaför’e uzun zamandır geliyoruz ve her seferinde aynı memnuniyetle ayrılıyoruz. Köpeğime yaklaşımları gerçekten çok nazik ve sabırlı, bu da özellikle stresli olabilen patili dostlarımız için çok önemli. Tıraş öncesinde ihtiyaçlarını ve hassasiyetlerini detaylıca soruyorlar, asla acele etmeden tamamen köpeğin konforunu ön planda tutarak çalışıyorlar."
     },
     {
         id: 4,
-        name: "Nisan Sude Örnek",
-        date: "3 gün önce",
-        text: "4 yıldır düzenli olarak buraya geliyorum ve her zaman çok memnun kaldım. Özellikle Hamide Hanım için geldiğimi söyleyebilirim. Hem hayvanlara yaklaşımı inanılmaz güzel hem de gerçekten çok ilgili ve yardımcı oluyor. Ne zaman bir sorum olsa sabırla yardımcı oldu ve her konuda güven verdi.🐾"
+        name: "Pınar Arslan",
+        date: "2 hafta önce",
+        text: "Evden alıp eve bırak hizmetini denedim ve gerçekten büyük kolaylık. Yoğun çalışan biri olarak benim için kurtarıcı oldu. Köpeğim tam saatinde getirildi ve tertemizdi. İletişimleri çok düzgün ve güven verici. Düzenli geleceğiz.☺️🩵"
     },
     {
         id: 5,
@@ -209,37 +211,89 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 relative z-10 bg-[#FDFBF7]"> 
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-stone-200 items-stretch">
-            
-            <div className="flex flex-col items-center justify-center text-center py-8 md:py-0 px-4 h-full"> 
-              <HeartHandshake className="w-8 h-8 text-[#C08282] mb-5" strokeWidth={1.5} />
-              <h4 className="text-xl font-serif text-stone-900 mb-3">Sevgiyle Bakım</h4>
-              <p className="text-stone-500 text-sm leading-relaxed font-light">
-                Her dostumuzu kendi çocuğumuz gibi benimsiyor, stressiz ve huzurlu bir ortam sağlıyoruz.
-              </p>
-            </div>
+{/* MARQUEE + STATS SECTION */}
+<section className="relative z-10 bg-[#FDFBF7]">
 
-            <div className="flex flex-col items-center justify-center text-center py-8 md:py-0 px-4 h-full">
-              <ShieldCheck className="w-8 h-8 text-[#C08282] mb-5" strokeWidth={1.5} />
-              <h4 className="text-xl font-serif text-stone-900 mb-3">Güvenilir Eller</h4>
-              <p className="text-stone-500 text-sm leading-relaxed font-light">
-                Uzman ekibimizle sadece estetik değil, deri ve tüy sağlığını da ön planda tutuyoruz.
-              </p>
+  {/* ÜST: Kayan Marquee Şeridi */}
+  <div className="border-y border-stone-200 overflow-hidden py-4 bg-[#FDFBF7]">
+    <div className="flex animate-marquee whitespace-nowrap gap-0">
+      {[...Array(2)].map((_, i) => (
+        <div key={i} className="flex items-center gap-0 flex-shrink-0">
+          {[
+            "2019'dan Beri",
+            "500+ Mutlu Misafir",
+            "Sarıyer & Maslak",
+            "4.6★ Google",
+            "Makas Tıraş Uzmanı",
+            "Anestezisiz Kedi Bakımı",
+            "Premium Ürünler",
+            "7/7 Hizmet",
+          ].map((item, j) => (
+            <div key={j} className="flex items-center">
+              <span className="font-sans text-[11px] font-bold tracking-[0.3em] uppercase text-stone-400 px-8">
+                {item}
+              </span>
+              <span className="text-[#C08282] text-xs select-none">✦</span>
             </div>
-
-            <div className="flex flex-col items-center justify-center text-center py-8 md:py-0 px-4 h-full">
-              <Sparkles className="w-8 h-8 text-[#C08282] mb-5" strokeWidth={1.5} />
-              <h4 className="text-xl font-serif text-stone-900 mb-3">Premium Ürünler</h4>
-              <p className="text-stone-500 text-sm leading-relaxed font-light">
-                Sadece en kaliteli, hayvan dostu ve dermatolojik onaylı ürünleri kullanıyoruz.
-              </p>
-            </div>
-
-          </div>
+          ))}
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+  {/* ALT: 2 Kolonlu Stats + Manifesto */}
+  <div className="grid grid-cols-1 md:grid-cols-2 border-b border-stone-200">
+
+    {/* Sol — Büyük manifesto yazısı */}
+    <div className="px-10 md:px-16 py-16 md:py-20 border-b md:border-b-0 md:border-r border-stone-200 flex flex-col justify-between gap-10">
+      <p className="font-serif text-2xl md:text-3xl text-stone-800 leading-[1.4] font-light">
+        &ldquo;Sıradan bir kuaför değil —<br />
+        <em className="text-[#C08282]">dostunuzun kendini güvende hissettiği</em><br />
+        bir bakım ritüeli.&rdquo;
+      </p>
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-[1px] bg-stone-300" />
+        <span className="font-sans text-[10px] font-bold tracking-[0.3em] uppercase text-stone-400">
+          GAVGAVPET 
+        </span>
+      </div>
+    </div>
+
+    {/* Sağ — 4 stat */}
+    <div className="grid grid-cols-2 divide-x divide-y divide-stone-200">
+
+      <div className="px-8 py-10 flex flex-col gap-2">
+        <span className="font-serif text-5xl text-black leading-none">500<span className="text-[#C08282]">+</span></span>
+        <span className="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-stone-400 mt-1">
+          Mutlu Misafir
+        </span>
+      </div>
+
+      <div className="px-8 py-10 flex flex-col gap-2">
+        <span className="font-serif text-5xl text-black leading-none">4.6<span className="text-[#C08282]">★</span></span>
+        <span className="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-stone-400 mt-1">
+          Google Puanı
+        </span>
+      </div>
+
+      <div className="px-8 py-10 flex flex-col gap-2">
+        <span className="font-serif text-5xl text-black leading-none">7<span className="text-[#C08282]">/7</span></span>
+        <span className="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-stone-400 mt-1">
+          Hizmet Günleri
+        </span>
+      </div>
+
+      <div className="px-8 py-10 flex flex-col gap-2">
+        <span className="font-serif text-5xl text-black leading-none">&#x27;19<span className="text-[#C08282]"></span></span>
+        <span className="font-sans text-[10px] font-bold tracking-[0.25em] uppercase text-stone-400 mt-1">
+          Kuruluş Yılı
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
 
       <section className="pb-24 border-b border-stone-200 relative z-10 bg-[#FDFBF7]">
         <div className="container mx-auto px-6 md:px-12 mb-10 text-center md:text-left pt-16 md:pt-24">
@@ -372,21 +426,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 bg-[#FDFBF7] text-center px-6 relative z-10 border-t border-stone-100"> 
-        <Star className="w-6 h-6 text-[#C08282] mx-auto mb-8 animate-pulse fill-current" />
-        <h3 className="text-3xl md:text-5xl font-serif text-stone-950 max-w-5xl mx-auto leading-[1.2] font-light"> 
-           &quot;Sadece bir kuaför değil, dostunuzun kendini özel hissedeceği stressiz ve lüks bir bakım ritüeli.&quot;
-        </h3>
-        <div className="mt-16">
-            <Link 
-              href="/appointment" 
-              className="inline-block bg-black border border-black text-white px-8 py-4 font-bold uppercase tracking-[0.2em] text-xs hover:!bg-white hover:!text-black transition-colors duration-300"
-            >
-                Randevu Oluştur
-            </Link>
-        </div>
-      </section>
-
+    
+      <LocationFooterBox />
+      <Footer />
     </main>
   );
 }

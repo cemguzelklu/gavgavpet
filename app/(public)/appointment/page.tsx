@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Check, Star, ChevronLeft, ChevronRight, Calendar as CalendarIcon, PawPrint } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import Footer from "@/components/Footer";
+
 
 // --- ÖZEL TAKVİM BİLEŞENİ ---
 const CustomDatePicker = ({ onSelect }: { onSelect: (date: string) => void }) => {
@@ -308,6 +310,7 @@ export default function AppointmentPage() {
         </div>
 
       </div>
+      <Footer />
     </main>
   );
 }

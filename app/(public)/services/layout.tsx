@@ -1,5 +1,6 @@
 // app/(public)/services/layout.tsx  ← YENİ DOSYA
 import type { Metadata } from "next";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Köpek ve Kedi Grooming Hizmetleri – Sarıyer Maslak",
@@ -8,5 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <>{children}
+  <Footer dark={true} />
+  
+  </>;
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 
@@ -23,7 +22,6 @@ export default function PublicLayout({
       </main>
 
       <FloatingWhatsApp />
-      <Footer />
     </>
   );
 }
