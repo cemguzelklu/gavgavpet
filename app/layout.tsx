@@ -82,7 +82,6 @@ const jsonLd = {
     "https://www.instagram.com/gavgavpet_kuafor"
   ],
   "priceRange": "₺₺₺",
-  "servesCuisine": null,
   "hasMap": "https://www.google.com/maps/search/?api=1&query=GavGavPet+Maslak+1453",
   "areaServed": [
     { "@type": "City", "name": "Sarıyer" },
