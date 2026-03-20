@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import ProductListing from "@/components/ProductListing"; 
+import Footer from "@/components/Footer";
 
 async function getProducts() {
   const products = await prisma.product.findMany({
