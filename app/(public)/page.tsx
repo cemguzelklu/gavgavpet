@@ -6,6 +6,9 @@ import { Star, ChevronRight, ChevronLeft, PawPrint, Quote, HeartHandshake, Shiel
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion"; 
 import { getAdminStats } from "../admin/actions"; 
+import ScrollAnimasyon from "@/components/scrollanimasyon/ScrollAnimasyon";
+
+
 
 // --- VERİ TİPİ ---
 interface ServiceType {
@@ -285,6 +288,8 @@ export default function HomePage() {
         </div>
       </section>
 
+   
+
       <section 
         className="py-16 md:py-24 bg-stone-900 text-stone-50 overflow-hidden relative z-10" 
         onMouseEnter={() => setIsAutoPlayingReviews(false)}
@@ -374,7 +379,6 @@ export default function HomePage() {
            &quot;Sadece bir kuaför değil, dostunuzun kendini özel hissedeceği stressiz ve lüks bir bakım ritüeli.&quot;
         </h3>
         <div className="mt-16">
-            {/* DÜZENLENEN KISIM BURASI: hover:!bg-white hover:!text-black ile garantiye alındı */}
             <Link 
               href="/appointment" 
               className="inline-block bg-black border border-black text-white px-8 py-4 font-bold uppercase tracking-[0.2em] text-xs hover:!bg-white hover:!text-black transition-colors duration-300"

@@ -76,11 +76,11 @@ export default function Navbar() {
                 <SheetTrigger asChild>
                     <button className="flex items-center gap-3 group/btn outline-none relative z-50">
                         <div className="relative w-8 h-8 flex items-center justify-center transition-transform duration-1000 group-hover/btn:rotate-90">
-                           {isOpen ? (
-                             <X className="w-8 h-8 text-black stroke-[1.5]" />
-                           ) : (
-                             <Menu className="w-8 h-8 text-black stroke-[1.5]" />
-                           )}
+                            {isOpen ? (
+                              <X className="w-8 h-8 text-black stroke-[1.5]" />
+                            ) : (
+                              <Menu className="w-8 h-8 text-black stroke-[1.5]" />
+                            )}
                         </div>
                     </button>
                 </SheetTrigger>
@@ -101,7 +101,8 @@ export default function Navbar() {
                         <MenuLink href="/services" label="Hizmetler" onClick={() => setIsOpen(false)} isActive={pathname === "/services"} />
                         <MenuLink href="/contact" label="İletişim" onClick={() => setIsOpen(false)} isActive={pathname === "/contact"} />
                         
-                        <div className="mt-6 md:hidden">
+                        {/* DEĞİŞTİRİLEN KISIM: md:hidden sınıfı kaldırıldı. Artık hem mobilde hem masaüstünde yandaki menüde görünecek */}
+                        <div className="mt-6">
                              <Button asChild className="w-full bg-black text-white border border-black hover:!bg-white hover:!text-black transition-colors duration-300 rounded-none py-6 text-xs tracking-widest uppercase">
                                 <Link href="/appointment" onClick={() => setIsOpen(false)}>Randevu Al</Link>
                             </Button>

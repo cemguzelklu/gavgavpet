@@ -19,10 +19,32 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Gavgav Pet | Luxury Pet Spa",
-  description: "Patili dostlarınız için üst düzey bakım ve spa deneyimi.",
+  title: {
+    default: "Pet Kuaför Sarıyer & Maslak | GavgavPet – Premium Köpek ve Kedi Bakımı",
+    template: "%s | GavgavPet",
+  },
+  description:
+    "Sarıyer Maslak 1453'te hizmet veren GavgavPet; köpek tıraşı, kedi bakımı, spa ve grooming hizmetleriyle İstanbul'un en özel pet kuaförü.",
+  keywords: [
+    "pet kuaför sarıyer",
+    "pet kuaför maslak",
+    "köpek kuaförü sarıyer",
+    "köpek tıraşı maslak",
+    "kedi tıraşı sarıyer",
+    "pet grooming istanbul",
+    "gavgavpet",
+  ],
+  openGraph: {
+    title: "Pet Kuaför Sarıyer & Maslak | GavgavPet",
+    description:
+      "Sarıyer Maslak 1453'te köpek ve kedi bakımı. Makas tıraş, spa, ozon terapi ve daha fazlası.",
+    url: "https://gavgavpet.com",
+    siteName: "GavgavPet",
+    locale: "tr_TR",
+    type: "website",
+  },
   icons: {
-    icon: "/icon.png", // public klasöründeki yeni isme yönlendirdik
+    icon: "/icon.png",
     apple: "/icon.png",
   },
 };
