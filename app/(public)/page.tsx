@@ -6,7 +6,6 @@ import { Star, ChevronRight, ChevronLeft, PawPrint, Quote, HeartHandshake, Shiel
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion"; 
 import { getAdminStats } from "../admin/actions"; 
-import ScrollAnimasyon from "@/components/scrollanimasyon/ScrollAnimasyon";
 
 
 
