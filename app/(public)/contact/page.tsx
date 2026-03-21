@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Instagram, Check, MessageCircle, ExternalLink } from "lucide-react";
 import { useRef, useState } from "react";
-import LocationFooterBox from "@/components/LocationFooterBox";
 
 
 export default function ContactPage() {
@@ -205,7 +204,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <LocationFooterBox />
+      
     </main>
   );
 }

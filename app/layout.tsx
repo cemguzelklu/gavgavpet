@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     icon: "/paw2.png",
     apple: "/paw2.png",
   },
+  alternates: {
+    canonical: "https://www.gavgavpet.com",
+  },
 };
 
 // ✅ JSON-LD SCHEMA
