@@ -5,19 +5,24 @@ import { Toaster } from "sonner";
 import { Playfair_Display, Lato } from "next/font/google";
 import Loader from "@/components/Loader";
 
+// 1. DEĞİŞİKLİK: Türkçe karakter sorunu için "latin-ext" eklendi
 const playfair = Playfair_Display({
   variable: "--font-serif",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
 });
 
+// 1. DEĞİŞİKLİK: Türkçe karakter sorunu için "latin-ext" eklendi
 const lato = Lato({
   variable: "--font-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "700"],
 });
 
 export const metadata: Metadata = {
+  // 2. DEĞİŞİKLİK: WWW sorununu kökten çözen Base URL eklendi
+  metadataBase: new URL("https://www.gavgavpet.com"),
+  
   title: {
     default: "Pet Kuaför Sarıyer & Maslak | GavgavPet – Premium Köpek ve Kedi Bakımı",
     template: "%s | GavgavPet",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
     title: "Pet Kuaför Sarıyer & Maslak | GavgavPet",
     description:
       "Sarıyer Maslak 1453'te köpek ve kedi bakımı. Makas tıraş, spa, ozon terapi ve daha fazlası.",
-    url: "https://gavgavpet.com",
+    url: "https://www.gavgavpet.com", // 3. DEĞİŞİKLİK: WWW eklendi
     siteName: "GavgavPet",
     locale: "tr_TR",
     type: "website",
@@ -46,8 +51,9 @@ export const metadata: Metadata = {
     icon: "/paw2.png",
     apple: "/paw2.png",
   },
+  // 4. DEĞİŞİKLİK: metadataBase kullanıldığı için sadece "/" yazmak yeterli
   alternates: {
-    canonical: "https://www.gavgavpet.com",
+    canonical: "/",
   },
 };
 
@@ -57,7 +63,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   "name": "GavgavPet",
   "description": "Sarıyer Maslak 1453'te hizmet veren premium pet kuaförü. Köpek tıraşı, kedi bakımı, spa ve grooming.",
-  "url": "https://gavgavpet.com",
+  "url": "https://www.gavgavpet.com", // 3. DEĞİŞİKLİK: WWW eklendi
   "telephone": "+905368994374",
   "email": "gavgavpetkuafor@gmail.com",
   "address": {

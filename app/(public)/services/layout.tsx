@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Köpek ve Kedi Grooming Hizmetleri – Sarıyer Maslak",
   description:
     "GavgavPet'te makas tıraş, spa, ozon terapi, keratin, yaratıcı renklendirme ve kedi bakımı. Sarıyer Maslak 1453'te premium pet grooming.",
-};
+    alternates: {
+      canonical: "/services", 
+    },
+  };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return <>{children}
