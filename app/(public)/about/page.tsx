@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import LocationFooterBox from "@/components/LocationFooterBox";
+import InstaCarousel from "@/components/scrollanimasyon/InstaCarousel";
+
 
 const values = [
   {
@@ -172,6 +174,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <InstaCarousel />
       <LocationFooterBox />
 
     </main>

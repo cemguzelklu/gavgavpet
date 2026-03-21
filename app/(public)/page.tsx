@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import LocationFooterBox from "@/components/LocationFooterBox";
 import { getAdminStats } from "../admin/actions"; 
 import Footer from "@/components/Footer";
+import HomeAbout from "@/components/HomeAbout";
+import InstaCarousel from "@/components/scrollanimasyon/InstaCarousel";
 
 
 
@@ -292,7 +294,7 @@ export default function HomePage() {
 
     </div>
   </div>
-
+  <HomeAbout />
 </section>
 
       <section className="pb-24 border-b border-stone-200 relative z-10 bg-[#FDFBF7]">
@@ -426,7 +428,7 @@ export default function HomePage() {
         </div>
       </section>
 
-    
+      <InstaCarousel />
       <LocationFooterBox />
       <Footer />
     </main>
