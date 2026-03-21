@@ -2,10 +2,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
 export default function ContactCta() {
   return (
-    <section className="py-24 md:py-32 bg-[#FDFBF7] overflow-hidden relative w-full">
+    <section className={`py-24 md:py-32 bg-[#FDFBF7] overflow-hidden relative w-full ${inter.className}`}>
       
       {/* Hafif doku deseni */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
@@ -15,10 +18,9 @@ export default function ContactCta() {
         }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* KESİN ÇÖZÜM: flex yerine grid kullanıyoruz. Asla alt satıra düşmeyecek. */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 items-center">
 
           {/* ─ Sol: Yazı + Buton ─ */}
           <motion.div
@@ -39,21 +41,22 @@ export default function ContactCta() {
 
             <div className="w-14 h-[1px] bg-stone-300 mb-8" />
 
-            {/* Kesme işareti (&apos;) ile syntax hatası giderildi */}
             <p className="text-stone-500 font-light tracking-wide mb-10 max-w-lg leading-relaxed text-sm md:text-base">
               GavGav Pet Kuaför&apos;de sevimli dostlarınızın tüy kesimi, banyo ve pati bakımı gibi tüm ihtiyaçlarını sevgiyle ve profesyonelce karşılıyoruz. Hemen randevunuzu oluşturun, patili dostunuzu mutlu edelim.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              {/* DEĞİŞİKLİK BURADA: hover:!text-black ve transition-all kullanıldı */}
               <Link
                 href="/appointment"
-                className=" bg-black text-white px-10 py-4 text-xs font-light tracking-[0.25em] uppercase hover:bg-stone-800 transition-colors duration-500 shadow-xl text-center"
+                className="bg-black text-white border border-black px-10 py-4 text-xs font-light tracking-[0.25em] uppercase hover:bg-white hover:!text-black transition-all duration-500 shadow-xl text-center"
               >
                 Randevu Oluştur
               </Link>
+              
               <Link
                 href="/contact"
-                className="px-10 py-4 text-xs font-light tracking-[0.25em] uppercase text-stone-700 border border-stone-300 hover:border-stone-700 transition-colors duration-500 text-center"
+                className="px-10 py-4 text-xs font-light tracking-[0.25em] uppercase text-stone-700 border border-stone-300 hover:bg-stone-700 hover:text-white hover:border-stone-700 transition-all duration-500 text-center"
               >
                 İletişime Geç
               </Link>
@@ -70,7 +73,6 @@ export default function ContactCta() {
           >
             <div className="bg-[#FDFBF7] shadow-2xl shadow-stone-200 overflow-hidden flex flex-col rounded-sm">
 
-              {/* Orijinal Google Maps Harita Alanı (Sol üstteki beyaz GavGavPet etiketiyle birlikte) */}
               <div className="w-full h-64 sm:h-72 lg:h-80 relative">
                 <iframe
                   title="GavGav Pet Konum"
@@ -82,7 +84,6 @@ export default function ContactCta() {
                 />
               </div>
 
-              {/* Kart Bilgi Alanı */}
               <div className="p-8 flex flex-col gap-5">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center flex-shrink-0 mt-0.5">
